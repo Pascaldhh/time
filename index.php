@@ -70,7 +70,9 @@
                 {
                     for($i=1; $i < $minus; $i++)
                     {
-                        $totalH += $date1->format('h') + 1;
+                        $totalH += $date1->format('h') + $i;
+                        if($totalH > 12){$totalH -= 12;}
+                        		                       
                         $kwartOver += 1;
                         $half += 1;
                         $kwartVoor += 1;
@@ -80,7 +82,8 @@
                 {
                     for($i=1; $i < $minus2; $i++)
                     {
-                        $totalH += $date1->format('h') + 1;
+                        $totalH += $date1->format('h') + $i;
+                        if($totalH > 12){$totalH -= 12;}
                         $kwartOver += 1;
                         $half += 1;
                         $kwartVoor += 1;
@@ -96,13 +99,14 @@
 
 
         $totalM = $kwartOver + $half*2 + $kwartVoor*3;
-
+        $total = $totalH+$totalM;
+        
         echo '<br>Start Tijd:<b> ' . $startTime .'</b><br>Eind Tijd: <b>'. $endTime . '</b><br><br>'.
              'De klok is zovaak langs kwart over gegaan:<b> ' . $kwartOver .'</b><br>Met een totaal aantal slagen van: <b>'. $kwartOver . '</b><br><br>'.
              'De klok is zovaak langs half gegaan:<b> ' . $half .'</b><br>Met een totaal aantal slagen van: <b>'. $half*2 ."</b><br><br>".
              'De klok is zovaak langs kwart voor gegaan:<b> ' . $kwartVoor .'</b><br>Met een totaal aantal slagen van: <b>'. $kwartVoor*3 ."</b><br><br>".
              'Aantal slagen min:<b> '.$totalM. '</b><br>Aantal slagen uur:<b> '.$totalH. 
-             '</b><br><br>Totaal aantal slagen: <b>' . $totalH+$totalM . '</b>';
+             '</b><br><br>Totaal aantal slagen: <b>' . $total . '</b>';
     
         
     ?>
